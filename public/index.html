@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Toss Hacker™ - Official Access</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(18, 26, 43, 0.75);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --accent: #00e5ff;
+      --accent-glow: rgba(0, 229, 255, 0.35);
+      --gold: #ffd000;
+      --gold-glow: rgba(255, 208, 0, 0.35);
+      --text: #ffffff;
+      --text-muted: #8e9bb0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(circle at 50% 10%, rgba(0, 229, 255, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 80% 90%, rgba(255, 208, 0, 0.1) 0%, transparent 50%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: var(--text);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--card-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 36px 24px 28px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    /* Profile Avatar Section */
+    .avatar-wrapper {
+      position: relative;
+      width: 104px;
+      height: 104px;
+      margin: 0 auto 16px;
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1e283d 0%, #0d131f 100%);
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 25px var(--accent-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .avatar svg {
+      width: 58px;
+      height: 58px;
+      fill: var(--gold);
+      filter: drop-shadow(0 2px 8px var(--gold-glow));
+    }
+
+    .badge-verified {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 26px;
+      height: 26px;
+      background: #00b0ff;
+      border: 2px solid var(--bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .badge-verified svg {
+      width: 14px;
+      height: 14px;
+      fill: #fff;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .channel-tag {
+      display: inline-block;
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 18px;
+    }
+
+    /* Live Stat Bar */
+    .live-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 230, 118, 0.12);
+      border: 1px solid rgba(0, 230, 118, 0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      color: #00e676;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #00e676;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00e676;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Countdown Ring */
+    .timer-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 24px;
+    }
+
+    .timer-svg {
+      transform: rotate(-90deg);
+      width: 120px;
+      height: 120px;
+    }
+
+    .timer-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.08);
+      stroke-width: 8;
+    }
+
+    .timer-circle {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 339;
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 1s linear;
+      filter: drop-shadow(0 0 6px var(--accent-glow));
+    }
+
+    .timer-number {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .redirect-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    /* Call to Action */
+    .btn-join {
+      display: block;
+      width: 100%;
+      background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+      color: #ffffff;
+      padding: 16px 20px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      box-shadow: 0 10px 25px rgba(0, 114, 255, 0.45);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-join:active {
+      transform: scale(0.98);
+      box-shadow: 0 4px 15px rgba(0, 114, 255, 0.3);
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <!-- Channel DP -->
+    <div class="avatar-wrapper">
+      <div class="avatar">
+        <!-- Toss / Coin Hacker Icon -->
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M12 4v4m0 8v4m-4-8h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M9 10l3-3 3 3m-6 4l3 3 3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="badge-verified" title="Verified Channel">
+        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      </div>
+    </div>
+
+    <h1>TOSS HACKER™</h1>
+    <div class="channel-tag">Cricket & Toss Intelligence</div>
+
+    <div>
+      <div class="live-status">
+        <div class="pulse-dot"></div>
+        <span>Match Toss Predictions Active</span>
+      </div>
+    </div>
+
+    <!-- 15-Sec Countdown Ring -->
+    <div class="timer-container">
+      <svg class="timer-svg" viewBox="0 0 120 120">
+        <circle class="timer-bg" cx="60" cy="60" r="54"></circle>
+        <circle id="timer-bar" class="timer-circle" cx="60" cy="60" r="54"></circle>
+      </svg>
+      <div id="countdown-text" class="timer-number">15</div>
+    </div>
+
+    <p class="redirect-label">Securing official Telegram invite... Redirecting automatically.</p>
+
+    <!-- Instant Bypass Button -->
+    <a id="join-link" href="https://t.me/+GLuWZ-7mL4A2NGVl" class="btn-join">
+      JOIN TELEGRAM CHANNEL NOW
+    </a>
+
+    <div class="footer-note">Free link expires once capacity is reached.</div>
+  </div>
+
+  <script>
+    (function () {
+      const targetUrl = "https://t.me/+GLuWZ-7mL4A2NGVl";
+      const totalTime = 15;
+      let timeLeft = totalTime;
+
+      const countdownText = document.getElementById("countdown-text");
+      const timerBar = document.getElementById("timer-bar");
+      const perimeter = 2 * Math.PI * 54; // ≈ 339.29
+
+      timerBar.style.strokeDasharray = perimeter;
+
+      const interval = setInterval(function () {
+        timeLeft--;
+        if (timeLeft >= 0) {
+          countdownText.textContent = timeLeft;
+          const offset = perimeter - (timeLeft / totalTime) * perimeter;
+          timerBar.style.strokeDashoffset = offset;
+        }
+
+        if (timeLeft <= 0) {
+          clearInterval(interval);
+          window.location.href = targetUrl;
+        }
+      }, 1000);
+    })();
+  </script>
+</body>
+</html>
